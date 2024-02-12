@@ -42,7 +42,7 @@ export default function TrendingProducts() {
 
       <div
         id="trending-products-container"
-        className="flex gap-5 mt-10 overflow-x-auto"
+        className="flex gap-5 mt-10 overflow-x-auto overflow-y-auto overscroll-x-none"
       >
         {trendingProductsData.map((product) => {
           return (

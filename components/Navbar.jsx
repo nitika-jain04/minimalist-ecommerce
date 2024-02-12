@@ -44,7 +44,7 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`flex justify-between px-5 shadow-md mb-5 sticky top-0 z-50 bg-white xl:px-36 ${navPadding}`}
+      className={`flex justify-between px-5 shadow-md mb-5 sticky top-0 z-50 bg-white xl:px-36 overscroll-none overscroll-y-none ${navPadding}`}
     >
       <Link href="/">
         <img className="w-1/2" src="/logo-real.png" alt="Logo" />
@@ -59,15 +59,17 @@ export default function Navbar() {
         </Link>
         <Link
           className="hidden sm:block tracking-tight hover:underline font-blinker"
-          href="/categories/product/12"
+          href="/categories/product/19"
         >
           PRODUCT PAGE
         </Link>
 
-        <div className="flex">
-          <sup className="">{totalCartItems ? totalCartItems : 0}</sup>
+        <div className="flex flex-col relative hover:scale-110 hover:cursor-pointer">
+          <sup className="absolute -right-2 -top-2 text-sm px-2 text-white bg-red-600 rounded-full font-blinker font-medium">
+            {totalCartItems ? totalCartItems : 0}
+          </sup>
           <PiShoppingCartBold
-            className="text-2xl"
+            className="text-2xl m-2"
             onClick={() => handleClick(true)}
           />
         </div>
