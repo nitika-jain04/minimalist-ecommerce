@@ -1,19 +1,19 @@
 "use client";
 import { createContext, useEffect, useReducer } from "react";
 
-// function getLocalData() {
-//   let localCartData = localStorage.getItem("cartItems");
+function getLocalData() {
+  let localCartData = localStorage.getItem("cartItems");
 
-//   if (localCartData == []) {
-//     return [];
-//   } else {
-//     return JSON.parse(localCartData);
-//   }
-// }
+  if (localCartData == []) {
+    return [];
+  } else {
+    return JSON.parse(localCartData);
+  }
+}
 
 const CartContext = createContext({
-  items: [],
-  // cart: getLocalData(),
+  // items: [],
+  cart: getLocalData(),
   addItem: (item) => {},
   removeItem: (id) => {},
 });
@@ -64,7 +64,7 @@ function cartReducer(state, action) {
 
 export function CartContextProvider({ children }) {
   const [cart, dispatchCartAction] = useReducer(cartReducer, {
-    items: [],
+    items: getLocalData(),
   });
 
   function addItem(item) {
@@ -76,9 +76,9 @@ export function CartContextProvider({ children }) {
   }
 
   //To add data to local storage
-  // useEffect(() => {
-  //   localStorage.setItem("cartItems", JSON.stringify(cart.items));
-  // }, [cart.items]);
+  useEffect(() => {
+    localStorage.setItem("cartItems", JSON.stringify(cart.items));
+  }, [cart.items]);
 
   const cartContext = {
     items: cart.items,
