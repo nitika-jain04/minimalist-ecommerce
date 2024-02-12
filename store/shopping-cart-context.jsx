@@ -1,5 +1,5 @@
 "use client";
-import { createContext, useEffect, useReducer } from "react";
+import { createContext, useEffect, useReducer, localStorage } from "react";
 
 function getLocalData() {
   let localCartData = localStorage.getItem("cartItems");
