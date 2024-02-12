@@ -61,7 +61,7 @@ function AllCard({ id, img, name, price }) {
   return (
     <Link href={`/categories/product/${id}`}>
       <article className="w-auto border-2 pt-5 pb-3 border-gray-300 hover:border-black hover:border-2 transition-all duration-300 ease-in-out">
-        <img className="w-64" src={img} alt="product-image" />
+        <img src={img} alt="product-image" />
 
         <div className="flex flex-col gap-2 pl-3">
           <p className="font-blinker tracking-wide md:w-auto">{name}</p>
