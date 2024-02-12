@@ -1,10 +1,10 @@
 "use client";
-import { createContext, useEffect, useReducer, localStorage } from "react";
+import { createContext, useEffect, useReducer } from "react";
 
 function getLocalData() {
   let localCartData = localStorage.getItem("cartItems");
 
-  if (localCartData == []) {
+  if (localCartData === null || localCartData === "[]") {
     return [];
   } else {
     return JSON.parse(localCartData);
@@ -75,7 +75,6 @@ export function CartContextProvider({ children }) {
     dispatchCartAction({ type: "REMOVE_ITEM", id: id });
   }
 
-  //To add data to local storage
   useEffect(() => {
     localStorage.setItem("cartItems", JSON.stringify(cart.items));
   }, [cart.items]);
