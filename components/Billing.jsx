@@ -82,12 +82,12 @@ function CartItems({
     cartCtx.removeItem(item.id);
   }
 
-  function handleDecrease() {
+  function handleDecrease(id) {
     setCurrQuantity(currQuantity - 1);
-    cartCtx.removeItem(item.id);
+    cartCtx.removeItem(id);
   }
 
-  function handleIncrease() {
+  function handleIncrease(item) {
     setCurrQuantity(currQuantity + 1);
     cartCtx.addItem(item);
   }
@@ -103,7 +103,7 @@ function CartItems({
           Your Shopping Cart({totalCartItems})
         </h2>
         <IoMdClose
-          className="text-2xl font-bold"
+          className="text-2xl font-bold hover:cursor-pointer"
           onClick={() => handleClick(false)}
         />
       </div>
@@ -133,14 +133,14 @@ function CartItems({
                     <div className="flex gap-1 border black items-center">
                       <button
                         className="border border-black bg-black text-white p-1"
-                        onClick={handleDecrease}
+                        onClick={() => handleDecrease(item.id)}
                       >
                         -
                       </button>
                       <p className="p-1">{cartItem.quantity}</p>
                       <button
                         className="border border-black bg-black text-white p-1"
-                        onClick={handleIncrease}
+                        onClick={() => handleIncrease(item)}
                       >
                         +
                       </button>
