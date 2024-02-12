@@ -2,15 +2,19 @@
 import { createContext, useEffect, useReducer } from "react";
 
 function getLocalData() {
-  let localCartData = localStorage.getItem("cartItems");
+  if (typeof window !== "undefined") {
+    let localCartData = localStorage.getItem("cartItems");
 
-  if (localCartData === null || localCartData === "[]") {
-    return [];
+    if (localCartData === null || localCartData === "[]") {
+      return [];
+    } else {
+      return JSON.parse(localCartData);
+    }
   } else {
-    return JSON.parse(localCartData);
+    // Handle non-browser environment (e.g., server-side rendering)
+    return [];
   }
 }
-
 const CartContext = createContext({
   // items: [],
   cart: getLocalData(),
