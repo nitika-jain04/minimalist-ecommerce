@@ -7,6 +7,19 @@ body {
   overscroll-behavior: none;
 }
 
+@keyframes swipeDown {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+.animate-swipe-down {
+  animation: swipeDown 0.5s ease;
+}
+
 @keyframes slideDown {
   0% {
     transform: translateY(-100%);
