@@ -16,10 +16,15 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [openSidebar, setOpenSidebar] = useState(false);
   const [navPadding, setNavPadding] = useState("py-4");
+  const [totalCartItems, setTotalCartItems] = useState(0);
 
-  const totalCartItems = cartCtx.items.reduce((totalNumberOfItems, item) => {
-    return totalNumberOfItems + item.quantity;
-  }, 0);
+  useEffect(() => {
+    const newTotalCartItems = cartCtx.items.reduce(
+      (total, item) => total + item.quantity,
+      0
+    );
+    setTotalCartItems(newTotalCartItems);
+  }, [cartCtx.items]);
 
   function handleClick(click) {
     setOpen(click);
@@ -34,12 +39,15 @@ export default function Navbar() {
   };
 
   useEffect(() => {
-    window.addEventListener("scroll", listenScrollEvent);
+    if (typeof window !== "undefined") {
+      // Run only on the client side
+      window.addEventListener("scroll", listenScrollEvent);
 
-    // Cleanup the event listener when the component unmounts
-    return () => {
-      window.removeEventListener("scroll", listenScrollEvent);
-    };
+      // Cleanup the event listener when the component unmounts
+      return () => {
+        window.removeEventListener("scroll", listenScrollEvent);
+      };
+    }
   }, []);
 
   return (
@@ -66,7 +74,7 @@ export default function Navbar() {
 
         <div className="flex flex-col relative hover:scale-110 hover:cursor-pointer">
           <sup className="absolute -right-2 -top-2 text-sm px-2 text-white bg-red-600 rounded-full font-blinker font-medium">
-            {totalCartItems ? totalCartItems : 0}
+            {totalCartItems}
           </sup>
           <PiShoppingCartBold
             className="text-2xl m-2"
