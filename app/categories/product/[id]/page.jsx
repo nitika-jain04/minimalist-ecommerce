@@ -3,9 +3,6 @@
 import { useState, useEffect, useContext } from "react";
 import CartContext from "@/store/shopping-cart-context";
 import { productData } from "@/data";
-import Navbar from "@/components/Navbar";
-import TrendingProducts from "@/components/TrendingProducts";
-import Footer from "@/components/Footer";
 
 export default function ProuctPage({ params }) {
   const selectedProduct = productData.find((prod) => prod.id === +params.id);
@@ -36,9 +33,10 @@ function ProductCard({ selectedProduct }) {
     setCurrQuantity(currQuantity + 1);
   }
 
-  function handleAddToCart() {
+  function handleAddToCart(item) {
     setClicked(true);
-    cartCtx.addItem(selectedProduct);
+    // console.log("cart added item");
+    cartCtx.addItem(item);
   }
 
   useEffect(() => {
@@ -54,7 +52,6 @@ function ProductCard({ selectedProduct }) {
 
   return (
     <div>
-      <Navbar />
       {clicked && (
         <div className="fixed top-10 left-28 md:left-[300px] xl:left-[620px] z-50 bg-green-300 p-4 mt-4 rounded-md animate-swipe-down">
           <p className="text-green-700 text-lg md:text-xl text-center italic font-blinker font-bold">
@@ -134,7 +131,7 @@ function ProductCard({ selectedProduct }) {
             <div className="grid grid-cols-1 gap-5 mt-10 md:grid-cols-2">
               <button
                 className="font-bold text-lg border-2 border-black py-2 hover:cursor-pointer hover:text-white hover:bg-black transition-all duration-200 ease-in-out"
-                onClick={handleAddToCart}
+                onClick={() => handleAddToCart(selectedProduct)}
               >
                 ADD TO CART
               </button>
@@ -162,9 +159,6 @@ function ProductCard({ selectedProduct }) {
           </div>
         </div>
       </div>
-
-      <TrendingProducts />
-      <Footer />
     </div>
   );
 }
