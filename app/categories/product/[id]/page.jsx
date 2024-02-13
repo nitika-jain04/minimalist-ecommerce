@@ -3,6 +3,9 @@
 import { useState, useEffect, useContext } from "react";
 import CartContext from "@/store/shopping-cart-context";
 import { productData } from "@/data";
+import Navbar from "@/components/Navbar";
+import TrendingProducts from "@/components/TrendingProducts";
+import Footer from "@/components/Footer";
 
 export default function ProuctPage({ params }) {
   const selectedProduct = productData.find((prod) => prod.id === +params.id);
@@ -51,16 +54,17 @@ function ProductCard({ selectedProduct }) {
 
   return (
     <div>
+      <Navbar />
       {clicked && (
-        <div>
-          <p>
+        <div className="fixed top-10 left-28 md:left-[300px] xl:left-[620px] z-50 bg-green-300 p-4 mt-4 rounded-md animate-swipe-down">
+          <p className="text-green-700 text-lg md:text-xl text-center italic font-blinker font-bold">
             Item added to cart <span>🎉</span>
           </p>
         </div>
       )}
       <div className="px-5 mt-5 xl:px-36 xl:w-full">
         <div className="flex justify-center font-bold text-3xl">
-          <h3 className="z-40">{selectedProduct.productName}</h3>
+          <h3 className="z-40 font-extrabold">{selectedProduct.productName}</h3>
         </div>
 
         <div className="mt-10 xl:flex">
@@ -158,119 +162,9 @@ function ProductCard({ selectedProduct }) {
           </div>
         </div>
       </div>
+
+      <TrendingProducts />
+      <Footer />
     </div>
   );
 }
-
-//   return (
-//     <>
-//       {clicked && (
-//         <div className="flex justify-center absolute top-5 left-96 animate-bounce z-50">
-//           <p className="text-white bg-green-700 font-bold font-blinker p-3 text-xl italic max-w-fit">
-//             Item added to cart <span className="ml-2">🎉</span>
-//           </p>
-//         </div>
-//       )}
-//       <div className="mx-36 mb-28 mt-1 relative">
-//         <div className="flex justify-center">
-//           <h3 className="font-extrabold tracking-tight text-3xl font-blinker mt-8 z-10">
-//             {selectedProduct.productName}
-//           </h3>
-//         </div>
-
-//         <div className="flex">
-//           <div className="flex flex-col">
-//             <div className="w-1/2 p-32 -mt-20">
-//               <img src={currImg} alt={selectedProduct.productName} />
-//             </div>
-
-//             <div className="flex gap-1 w-1/3 -mt-16 m-20">
-//               <img
-//                 className="w-1/3 hover:border hover:border-gray-400 hover:shadow-md hover:shadow-gray-400"
-//                 src={selectedProduct.img1}
-//                 alt=""
-//                 onMouseEnter={() => setCurrImg(selectedProduct.img1)}
-//               />
-//               <img
-//                 className="w-1/3 hover:border hover:border-gray-400 hover:shadow-md hover:shadow-gray-400"
-//                 src={selectedProduct.img2}
-//                 alt=""
-//                 onMouseEnter={() => setCurrImg(selectedProduct.img2)}
-//               />
-//               <img
-//                 className="w-1/3 hover:border hover:border-gray-400 hover:shadow-md hover:shadow-gray-400"
-//                 src={selectedProduct.img3}
-//                 alt=""
-//                 onMouseEnter={() => setCurrImg(selectedProduct.img3)}
-//               />
-//             </div>
-//           </div>
-
-//           <div className="flex flex-col gap-16 w-1/2 px-16 pt-40 pb-16 bg-gray-200 absolute top-5 right-0">
-//             <p className="font-blinker leading-7 text-base tracking-wide">
-//               {selectedProduct.description}
-//             </p>
-
-//             <div className="flex justify-between items-center">
-//               <p className="font-bold text-2xl">Quantity</p>
-
-//               <div className="flex items-center font-bold">
-//                 <button
-//                   className="border-2 border-black bg-white px-5 py-2 text-xl hover:bg-transparent transition-all duration-200 ease-in"
-//                   onClick={handleDecrease}
-//                 >
-//                   -
-//                 </button>
-//                 <p className="text-xl border-y-2 border-black px-5 py-2">
-//                   {currQuantity > 1 ? currQuantity : 1}
-//                 </p>
-//                 <button
-//                   className="border-2 border-black bg-white px-5 py-2 text-xl hover:bg-transparent transition-all duration-200 ease-in"
-//                   onClick={handleIncrease}
-//                 >
-//                   +
-//                 </button>
-//               </div>
-
-//               <p className="font-bold font-blinker text-2xl">
-//                 {currQuantity > 1
-//                   ? currQuantity * selectedProduct.price
-//                   : selectedProduct.price}
-//                 .00$
-//               </p>
-//             </div>
-
-//     <div className="flex gap-5">
-//       <button
-//         className="w-1/2 font-bold text-lg border-2 border-black py-2 hover:cursor-pointer hover:text-white hover:bg-black transition-all duration-200 ease-in-out"
-//         onClick={handleAddToCart}
-//       >
-//         ADD TO CART
-//       </button>
-//       <button className="w-1/2 font-bold text-lg bg-red-700 text-white hover:cursor-pointer hover:border-2 hover:border-red-700 hover:text-red-700 hover:bg-transparent transition-all duration-200 ease-in-out">
-//         BUY NOW
-//       </button>
-//     </div>
-//   </div>
-// </div>
-
-//         <div className="flex gap-10 w-full mt-24">
-//           <div className="flex flex-col gap-3 w-1/3 bg-gray-200 p-5">
-//             <p className="font-bold text-xl">Texture:</p>
-//             <p>{selectedProduct.texture}</p>
-//           </div>
-
-//           <div className="flex flex-col gap-3 w-1/3 bg-gray-200 p-5">
-//             <p className="font-bold text-xl">Weight:</p>
-//             <p>{selectedProduct.weight}kg</p>
-//           </div>
-
-//           <div className="flex flex-col gap-3 w-1/3 bg-gray-200 p-5">
-//             <p className="font-bold text-xl">Size:</p>
-//             <p>{selectedProduct.size}</p>
-//           </div>
-//         </div>
-//       </div>
-//     </>
-//   );
-// }
