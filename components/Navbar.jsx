@@ -19,7 +19,6 @@ export default function Navbar() {
   const [totalCartItems, setTotalCartItems] = useState(0);
 
   useEffect(() => {
-    // Fetch data or calculate dynamic content on the client side
     const newTotalCartItems = cartCtx.items.reduce(
       (total, item) => total + item.quantity,
       0
