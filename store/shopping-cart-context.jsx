@@ -1,23 +1,24 @@
 "use client";
 import { createContext, useEffect, useReducer } from "react";
 
-// function getLocalData() {
-//   if (typeof window !== "undefined") {
-//     let localCartData = localStorage.getItem("cartItems");
+function getLocalData() {
+  try {
+    let localCartData = localStorage.getItem("cartItems");
 
-//     if (localCartData === null || localCartData === "[]") {
-//       return [];
-//     } else {
-//       return JSON.parse(localCartData);
-//     }
-//   } else {
-//     // Handle non-browser environment (e.g., server-side rendering)
-//     return [];
-//   }
-// }
+    if (localCartData === null || localCartData === "[]") {
+      return [];
+    } else {
+      return JSON.parse(localCartData);
+    }
+  } catch (error) {
+    console.error("Error parsing local data:", error);
+    return [];
+  }
+}
+
 const CartContext = createContext({
-  items: [],
-  // cart: getLocalData(),
+  // items: [],
+  items: getLocalData(),
   addItem: (item) => {},
   removeItem: (id) => {},
 });
@@ -68,7 +69,7 @@ function cartReducer(state, action) {
 
 export function CartContextProvider({ children }) {
   const [cart, dispatchCartAction] = useReducer(cartReducer, {
-    items: [],
+    items: getLocalData(),
   });
 
   function addItem(item) {
@@ -79,9 +80,9 @@ export function CartContextProvider({ children }) {
     dispatchCartAction({ type: "REMOVE_ITEM", id: id });
   }
 
-  // useEffect(() => {
-  //   localStorage.setItem("cartItems", JSON.stringify(cart.items));
-  // }, [cart.items]);
+  useEffect(() => {
+    localStorage.setItem("cartItems", JSON.stringify(cart.items));
+  }, [cart.items]);
 
   const cartContext = {
     items: cart.items,
