@@ -2,9 +2,10 @@
 
 import { useState, useEffect, useContext } from "react";
 import CartContext from "@/store/shopping-cart-context";
+import toast, { Toaster } from "react-hot-toast";
 import { productData } from "@/data";
 
-export default function ProuctPage({ params }) {
+export default function ProductPage({ params }) {
   const selectedProduct = productData.find((prod) => prod.id === +params.id);
 
   if (!selectedProduct) {
@@ -35,29 +36,19 @@ function ProductCard({ selectedProduct }) {
 
   function handleAddToCart(item) {
     setClicked(true);
-    // console.log("cart added item");
+    console.log("cart added item");
+    toast.success("Item added to cart!");
     cartCtx.addItem(item);
   }
 
   useEffect(() => {
-    let timeout;
-    if (clicked) {
-      timeout = setTimeout(() => {
-        setClicked(false);
-      }, 3000);
-    }
-
-    return () => clearTimeout(timeout);
+    setClicked(false);
   }, [clicked]);
 
   return (
     <div>
       {clicked && (
-        <div className="fixed top-10 left-28 md:left-[300px] xl:left-[620px] z-50 bg-green-300 p-4 mt-4 rounded-md animate-swipe-down">
-          <p className="text-green-700 text-lg md:text-xl text-center italic font-blinker font-bold">
-            Item added to cart <span>🎉</span>
-          </p>
-        </div>
+        <Toaster toastOptions={{ duration: 6000, className: "z-50" }} />
       )}
       <div className="px-5 mt-5 xl:px-36 xl:w-full">
         <div className="flex justify-center font-bold text-3xl">
