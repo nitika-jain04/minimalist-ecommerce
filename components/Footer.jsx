@@ -10,7 +10,7 @@ export default function Footer() {
         <div className="flex gap-2 self-center">
           <input
             type="text"
-            name=""
+            name="email"
             id=""
             placeholder="your@gmail.com"
             className="p-2"
