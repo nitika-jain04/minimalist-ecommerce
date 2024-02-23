@@ -164,7 +164,7 @@ function CartItems({
             <p className="font-bold text-xl">Subtotal</p>
 
             <div className="flex justify-between items-center">
-              <p className="font-bold text-xl">{cartTotal}$</p>
+              <p className="font-bold text-xl">${cartTotal}</p>
               <button className="border-2 border-black p-4">
                 Go to Checkout
               </button>
