@@ -45,16 +45,3 @@ body {
 .animate-slide-in {
   animation: slideIn 0.2s ease-in-out;
 }
-
-/* @keyframes slideOut {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: -translateX(100%);
-  }
-}
-
-.animate-slide-out {
-  animation: slideOut 0.1s ease-out;
-} */
