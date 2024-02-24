@@ -57,7 +57,7 @@ function EmptyCart({ isOpen, handleClick }) {
 
       <div className="flex flex-col gap-5 items-center mt-40">
         <img className="w-1/3" src="/emptycart.png" alt="emptycart" />
-        <p className="font-bold font-blinker text-lg">Your cart is empty</p>
+        <p className="font-bold styles.blinker text-lg">Your cart is empty</p>
         <button
           className="border border-black px-4 py-2 text-base bg-gray-100 hover:cursor-pointer hover:bg-gray-200"
           onClick={() => handleClick(false)}
