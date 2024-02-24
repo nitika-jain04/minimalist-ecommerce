@@ -109,7 +109,7 @@ export default function Navbar() {
             </Link>
           ) : (
             <div
-              className="flex gap-2 items-center"
+              className="flex gap-1 xl:gap-2 items-center"
               onClick={() => {
                 localStorage.removeItem("user");
                 router.push("/account");
