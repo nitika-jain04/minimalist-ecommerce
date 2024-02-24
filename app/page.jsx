@@ -11,7 +11,7 @@ import { CartContextProvider } from "../store/shopping-cart-context";
 
 export default function Home() {
   return (
-    <div>
+    <>
       <CartContextProvider>
         <Navbar />
         <HeroPage />
@@ -21,6 +21,6 @@ export default function Home() {
         <Banner2 />
         <Footer />
       </CartContextProvider>
-    </div>
+    </>
   );
 }
