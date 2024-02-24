@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+.blinker {
+  font-family: var(blinker);
+  font-weight: 100;
+}
+
+.blinker-bold {
+  font-family: var(blinker);
+  font-weight: 700;
+}
+
 html,
 body {
   overscroll-behavior: none;
