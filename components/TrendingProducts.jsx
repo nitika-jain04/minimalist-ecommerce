@@ -23,7 +23,7 @@ export default function TrendingProducts() {
   return (
     <div className="mt-28 mx-5 xl:px-36">
       <div className="flex justify-between items-center">
-        <h3 className="text-2xl font-bold font-blinker">Trending Now</h3>
+        <h3 className="text-2xl font-semibold styles.blinker">Trending Now</h3>
         <div className="flex gap-2">
           <button
             className="text-3xl bg-stone-700 text-white hover:bg-black hover:cursor-pointer p-1"
@@ -69,8 +69,8 @@ function TrendingProductsCard({ id, img, name, price }) {
       >
         <img className="" src={img} alt="product-image" />
         <div className="flex flex-col gap-2 pl-3">
-          <p className="font-blinker tracking-wide">{name}</p>
-          <p className="font-bold text-xl font-blinker">${price}</p>
+          <p className="styles.blinker text-[17px] tracking-wide">{name}</p>
+          <p className="font-bold text-xl styles.blinker">${price}</p>
         </div>
       </article>
     </Link>
