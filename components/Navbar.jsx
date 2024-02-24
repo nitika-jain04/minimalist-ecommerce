@@ -71,20 +71,20 @@ export default function Navbar() {
 
       <div className="flex gap-4 items-center">
         <Link
-          className="hidden sm:block hover:underline font-blinker"
+          className="hidden text-[19px] sm:block hover:underline styles.blinker"
           href="/categories/all"
         >
           CATEGORIES
         </Link>
         <Link
-          className="hidden sm:block tracking-tight hover:underline font-blinker"
+          className="hidden text-[19px] sm:block tracking-tight hover:underline styles.blinker"
           href="/categories/product/19"
         >
           PRODUCT PAGE
         </Link>
 
         <div className="flex flex-col relative hover:scale-110 hover:cursor-pointer">
-          <sup className="absolute -right-2 -top-2 text-sm px-2 text-white bg-red-600 rounded-full font-blinker font-medium">
+          <sup className="absolute -right-2 -top-2 text-sm px-2 text-white bg-red-600 rounded-full styles.blinker font-medium">
             {totalCartItems}
           </sup>
 
@@ -99,12 +99,12 @@ export default function Navbar() {
           onClick={() => handleSidebar(true)}
         />
 
-        <button className="bg-red-500 gap-2 items-center text-white p-3 rounded-xl font-blinker tracking-wide border-2 border-white hover:scale-105 hover:bg-white hover:text-red-600 hover:border-2 hover:border-red-500 transition-all duration-300 ease-in">
+        <button className="bg-red-500 gap-2 items-center text-white p-3 rounded-xl styles.blinker tracking-wide border-2 border-white hover:scale-105 hover:bg-white hover:text-red-600 hover:border-2 hover:border-red-500 transition-all duration-300 ease-in">
           {user === null ? (
             <Link href="/account">
               <div className="flex gap-2 items-center">
                 <MdLogin />
-                <h1>Log In</h1>
+                <h1 className="styles.blinker font-medium">Log In</h1>
               </div>
             </Link>
           ) : (
@@ -116,7 +116,7 @@ export default function Navbar() {
               }}
             >
               <MdLogout />
-              <h1>Sign Out</h1>
+              <h1 className="styles.blinker font-medium">Sign Out</h1>
             </div>
           )}
         </button>
