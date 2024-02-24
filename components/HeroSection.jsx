@@ -12,7 +12,7 @@ export default function HeroPage() {
               alt=""
             />
 
-            <p className="absolute bottom-0 left-0 text-white p-2 text-2xl md:text-3xl font-blinker font-bold">
+            <p className="absolute bottom-0 left-0 text-white p-2 text-2xl md:text-3xl styles.blinker-bold font-semibold">
               Live Comfortably
             </p>
           </div>
@@ -26,7 +26,7 @@ export default function HeroPage() {
               alt=""
             />
 
-            <p className="absolute bottom-0 left-0 text-white p-2 text-2xl md:text-3xl font-blinker font-bold">
+            <p className="absolute bottom-0 left-0 text-white p-2 text-2xl md:text-3xl styles.blinker-bold font-semibold">
               Skincare
             </p>
           </div>
@@ -42,7 +42,7 @@ export default function HeroPage() {
               alt=""
             />
 
-            <p className="absolute bottom-0 left-0 text-white p-2 text-2xl md:text-3xl font-blinker font-bold">
+            <p className="absolute bottom-0 left-0 text-white p-2 text-2xl md:text-3xl styles.blinker-bold font-semibold">
               Kitchen
             </p>
           </div>
@@ -56,7 +56,7 @@ export default function HeroPage() {
               alt=""
             />
 
-            <p className="absolute bottom-0 left-0 text-white p-2 text-2xl md:text-3xl font-blinker font-bold">
+            <p className="absolute bottom-0 left-0 text-white p-2 text-2xl md:text-3xl styles.blinker-bold font-semibold">
               Electronics
             </p>
           </div>
