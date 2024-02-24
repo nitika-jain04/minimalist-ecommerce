@@ -5,7 +5,7 @@ import { proudProductsData } from "@/data";
 export default function ProudProductsPage() {
   return (
     <div className="mx-5 mt-28 xl:px-36">
-      <h2 className="text-2xl font-bold font-blinker mb-10">
+      <h2 className="text-2xl font-semibold styles.blinker mb-10">
         Products we are proud of
       </h2>
 
@@ -33,8 +33,8 @@ function ProudProductsCard({ id, img, name, price }) {
         <img src={img} alt="product-image" />
 
         <div className="flex flex-col gap-2 pl-3">
-          <p className="font-blinker tracking-wide">{name}</p>
-          <p className="font-bold text-xl font-blinker">${price}</p>
+          <p className="styles.blinker text-[17px] tracking-wide">{name}</p>
+          <p className="font-bold text-xl styles.blinker">${price}</p>
         </div>
       </article>
     </Link>
