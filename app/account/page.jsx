@@ -35,96 +35,72 @@ export default function AuthPage() {
           size: "invisible",
           callback: (response) => {
             // The captcha was verified successfully
-            onSignUp();
+            // onSignUp();
           },
-          "expired-callback": () => {
-            // Handle expired captcha if needed
-          },
+          "expired-callback": () => {},
         }
       );
+    } else {
+      window.recaptchaVerifier.render().then(function (widgetId) {
+        grecaptcha.reset(widgetId);
+      });
     }
+  }
+
+  async function onSignUp() {
+    setLoading(true);
+    onCaptchaVerify();
+
+    const appVerifier = window.recaptchaVerifier;
+    const formatPhone = "+" + phone;
+
+    signInWithPhoneNumber(auth, formatPhone, appVerifier)
+      .then((confirmationResult) => {
+        window.confirmationResult = confirmationResult;
+        setLoading(false);
+        setShowOtp(true);
+        toast.success("OTP sent successfully!");
+      })
+      .catch((error) => {
+        setLoading(false);
+        console.log("Error during sign-up:", error);
+        toast.error(error.message);
+      });
   }
 
   // async function onSignUp() {
-  //   const numericPhone = phone.replace(/\D/g, ""); // Remove non-numeric characters
-  //   const isValidPhone = numericPhone.length === 12 && !isNaN(numericPhone);
+  //   try {
+  //     const numericPhone = phone.replace(/\D/g, ""); // Remove non-numeric characters
+  //     const isValidPhone = numericPhone.length === 12 && !isNaN(numericPhone);
 
-  //   if (!isValidPhone) {
-  //     setError(true);
-  //     setDisabled(true);
-  //     return;
+  //     if (!isValidPhone) {
+  //       setError(true);
+  //       setDisabled(true);
+  //       return;
+  //     }
+
+  //     setLoading(true);
+  //     onCaptchaVerify(); // Ensure this is not being called multiple times
+
+  //     const appVerifier = window.recaptchaVerifier;
+  //     const formatPhone = "+" + numericPhone;
+
+  //     const confirmationResult = await signInWithPhoneNumber(
+  //       auth,
+  //       formatPhone,
+  //       appVerifier
+  //     );
+
+  //     window.confirmationResult = confirmationResult;
+  //     setLoading(false);
+  //     setShowOtp(true);
+  //     toast.success("OTP sent successfully!");
+  //   } catch (error) {
+  //     setLoading(false);
+  //     console.log("Error during sign-up:", error);
+  //     toast.error(error.message);
   //   }
-
-  //   setLoading(true);
-  //   onCaptchaVerify(); // Ensure this is not being called multiple times
-
-  //   const appVerifier = window.recaptchaVerifier;
-  //   const formatPhone = "+" + numericPhone;
-
-  //   signInWithPhoneNumber(auth, formatPhone, appVerifier)
-  //     .then((confirmationResult) => {
-  //       window.confirmationResult = confirmationResult;
-  //       setLoading(false);
-  //       setShowOtp(true);
-  //       toast.success("OTP sent successfully!");
-  //     })
-  //     .catch((error) => {
-  //       setLoading(false);
-  //       console.log("error sign section");
-  //       toast.error(error.message);
-
-  //       if (window.recaptchaVerifier && window.recaptchaWidgetId) {
-  //         grecaptcha.reset(window.recaptchaWidgetId);
-  //       } else if (window.recaptchaVerifier) {
-  //         window.recaptchaVerifier.render().then(function (widgetId) {
-  //           grecaptcha.reset(widgetId);
-  //         });
-  //       }
-  //     });
   // }
-
-  async function onSignUp() {
-    try {
-      const numericPhone = phone.replace(/\D/g, ""); // Remove non-numeric characters
-      const isValidPhone = numericPhone.length === 12 && !isNaN(numericPhone);
-
-      if (!isValidPhone) {
-        setError(true);
-        setDisabled(true);
-        return;
-      }
-
-      setLoading(true);
-      onCaptchaVerify(); // Ensure this is not being called multiple times
-
-      const appVerifier = window.recaptchaVerifier;
-      const formatPhone = "+" + numericPhone;
-
-      const confirmationResult = await signInWithPhoneNumber(
-        auth,
-        formatPhone,
-        appVerifier
-      );
-
-      window.confirmationResult = confirmationResult;
-      setLoading(false);
-      setShowOtp(true);
-      toast.success("OTP sent successfully!");
-    } catch (error) {
-      setLoading(false);
-      console.log("Error during sign-up:", error);
-      toast.error(error.message);
-
-      // Reset reCAPTCHA
-      if (window.recaptchaVerifier && window.recaptchaWidgetId) {
-        grecaptcha.reset(window.recaptchaWidgetId);
-      } else if (window.recaptchaVerifier) {
-        window.recaptchaVerifier.render().then(function (widgetId) {
-          grecaptcha.reset(widgetId);
-        });
-      }
-    }
-  }
 
   function onOtpVerify() {
     setLoading(true);
@@ -151,12 +127,12 @@ export default function AuthPage() {
   }
 
   return (
-    <section className="mx-36 flex items-center justify-center bg-emerald-600 h-96 font-blinker rounded-lg">
+    <section className="mx-36 flex items-center justify-center bg-emerald-600 h-96 styles.blinker rounded-lg">
       <div>
         <Toaster toastOptions={{ duration: 6000 }} />
         <div id="recaptcha-container"></div>
         <div className="w-80 flex flex-col gap-4 rounded-lg p-4">
-          <h1 className="text-center leading-normal text-white font-medium text-3xl mb-6">
+          <h1 className="text-center leading-normal text-white font-medium styles.blinker text-3xl mb-6">
             Welcome to your shopping app
           </h1>
 
