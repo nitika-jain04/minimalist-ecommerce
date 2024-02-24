@@ -127,7 +127,7 @@ export default function AuthPage() {
   }
 
   return (
-    <section className="mx-36 flex items-center justify-center bg-emerald-600 h-96 styles.blinker rounded-lg">
+    <section className="mx-5 md:mx-36 xl:mx-80 flex items-center justify-center bg-emerald-600 h-96 styles.blinker rounded-lg">
       <div>
         <Toaster toastOptions={{ duration: 6000 }} />
         <div id="recaptcha-container"></div>
