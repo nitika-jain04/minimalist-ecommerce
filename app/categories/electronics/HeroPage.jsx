@@ -5,39 +5,39 @@ import { electronicsData } from "../../../data";
 export default function HeroPage() {
   return (
     <div className="px-5 xl:px-36">
-      <div className="flex justify-between items-center mt-20">
+      <div className="flex justify-between items-center mt-14">
         <div className="flex items-center">
           <MdArrowBackIos className="font-bold" />
-          <Link href="/" className="text-sm font-medium">
+          <Link href="/" className="text-base styles.blinker font-medium">
             Home
           </Link>
         </div>
 
         <div className="w-full text-center">
-          <h1 className="font-bold text-2xl font-blinker">ELECTRONICS</h1>
+          <h1 className="font-bold text-2xl styles.blinker">ELECTRONICS</h1>
         </div>
       </div>
 
       <div className="flex flex-wrap justify-center gap-3 mt-10">
-        <button className="border-2 border-gray-400 px-3 text-sm font-blinker hover:border-2 hover:border-gray-600 hover:cursor-pointer">
+        <button className="border-2 border-gray-400 px-3 text-base styles.blinker hover:border-2 hover:border-gray-600 hover:cursor-pointer">
           <Link href="/categories/all">All</Link>
         </button>
-        <button className="border-2 border-gray-400 px-3 text-sm font-blinker hover:border-2 hover:border-gray-600 hover:cursor-pointer">
+        <button className="border-2 border-gray-400 px-3 text-base styles.blinker hover:border-2 hover:border-gray-600 hover:cursor-pointer">
           <Link href="/categories/furnitures">Furnitures</Link>
         </button>
-        <button className="border-2 border-gray-400 px-3 text-sm font-blinker hover:border-2 hover:border-gray-600 hover:cursor-pointer">
+        <button className="border-2 border-gray-400 px-3 text-base styles.blinker hover:border-2 hover:border-gray-600 hover:cursor-pointer">
           <Link href="/categories/electronics">Electronics</Link>
         </button>
-        <button className="border-2 border-gray-400 px-3 text-sm font-blinker hover:border-2 hover:border-gray-600 hover:cursor-pointer">
+        <button className="border-2 border-gray-400 px-3 text-base styles.blinker hover:border-2 hover:border-gray-600 hover:cursor-pointer">
           <Link href="/categories/lamps">Lamps</Link>
         </button>
-        <button className="border-2 border-gray-400 px-3 text-sm font-blinker hover:border-2 hover:border-gray-600 hover:cursor-pointer">
+        <button className="border-2 border-gray-400 px-3 text-base styles.blinker hover:border-2 hover:border-gray-600 hover:cursor-pointer">
           <Link href="/categories/kitchen">Kitchen</Link>
         </button>
-        <button className="border-2 border-gray-400 px-3 text-sm font-blinker hover:border-2 hover:border-gray-600 hover:cursor-pointer">
+        <button className="border-2 border-gray-400 px-3 text-base styles.blinker hover:border-2 hover:border-gray-600 hover:cursor-pointer">
           <Link href="/categories/chairs">Chairs</Link>
         </button>
-        <button className="border-2 border-gray-400 px-3 text-sm font-blinker hover:border-2 hover:border-gray-600 hover:cursor-pointer">
+        <button className="border-2 border-gray-400 px-3 text-base styles.blinker hover:border-2 hover:border-gray-600 hover:cursor-pointer">
           <Link href="/categories/skincare">Skincare</Link>
         </button>
       </div>
@@ -66,8 +66,10 @@ function AllCard({ id, img, name, price }) {
         <img src={img} alt="product-image" />
 
         <div className="flex flex-col gap-2 pl-3">
-          <p className="font-blinker tracking-wide md:w-auto">{name}</p>
-          <p className="font-bold text-xl font-blinker">{price}$</p>
+          <p className="styles.blinker text-[17px] tracking-wide md:w-auto">
+            {name}
+          </p>
+          <p className="font-bold text-xl styles.blinker">{price}$</p>
         </div>
       </article>
     </Link>
