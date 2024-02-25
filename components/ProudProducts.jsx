@@ -33,7 +33,9 @@ function ProudProductsCard({ id, img, name, price }) {
         <img src={img} alt="product-image" />
 
         <div className="flex flex-col gap-2 pl-3">
-          <p className="styles.blinker text-[17px] tracking-wide">{name}</p>
+          <p className="styles.blinker text-xl md:text-[17px] tracking-wide">
+            {name}
+          </p>
           <p className="font-bold text-xl styles.blinker">${price}</p>
         </div>
       </article>
