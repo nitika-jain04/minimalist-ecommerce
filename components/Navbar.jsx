@@ -46,7 +46,7 @@ export default function Navbar() {
   }
 
   const listenScrollEvent = () => {
-    window.scrollY > 20 ? setNavPadding("py-1") : setNavPadding("py-4");
+    window.scrollY > 20 ? setNavPadding("py-0") : setNavPadding("py-4");
   };
 
   useEffect(() => {
