@@ -4,6 +4,8 @@ import { useState, useEffect, useContext } from "react";
 import CartContext from "@/store/shopping-cart-context";
 import toast, { Toaster } from "react-hot-toast";
 import { productData } from "@/data";
+import { FaPlus } from "react-icons/fa";
+import { FaMinus } from "react-icons/fa";
 
 export default function ProductPage({ params }) {
   const selectedProduct = productData.find((prod) => prod.id === +params.id);
@@ -83,35 +85,35 @@ function ProductCard({ selectedProduct }) {
             </div>
           </div>
 
-          <div className="mt-10 px-5 py-5 flex flex-col gap-5 justify-center bg-gray-200 xl:w-1/2 xl:pt-40 xl:py-20 xl:-mt-20">
-            <p className="text-lg font-blinker">
+          <div className="mt-10 px-10 py-5 flex flex-col gap-5 justify-center bg-[#e5e5e5] xl:w-1/2 xl:pt-40 xl:py-20 xl:-mt-20">
+            <p className="text-xl styles.blinker leading-8">
               {selectedProduct.description}
             </p>
 
             <div className="flex flex-col gap-5 items-center justify-center mt-10 sm:flex sm:flex-row md:justify-between">
-              <p className="text-xl font-bold font-blinker md:text-2xl">
+              <p className="text-xl font-bold styles.blinker md:text-2xl">
                 Quantity
               </p>
 
               <div className="flex items-center font-bold">
                 <button
-                  className="border-2 border-black bg-white px-5 py-2 text-xl hover:bg-transparent transition-all duration-200 ease-in"
+                  className="border-2 border-black bg-white px-5 py-3 text-xl hover:bg-transparent transition-all duration-200 ease-in"
                   onClick={handleDecrease}
                 >
-                  -
+                  <FaMinus size={12} />
                 </button>
-                <p className="text-xl border-y-2 border-black px-5 py-2">
+                <p className="text-xl border-y-2 border-black px-5 py-1">
                   {currQuantity > 1 ? currQuantity : 1}
                 </p>
                 <button
-                  className="border-2 border-black bg-white px-5 py-2 text-xl hover:bg-transparent transition-all duration-200 ease-in"
+                  className="border-2 border-black bg-white px-5 py-3 text-xl hover:bg-transparent transition-all duration-200 ease-in"
                   onClick={handleIncrease}
                 >
-                  +
+                  <FaPlus size={12} className="font-semibold" />
                 </button>
               </div>
 
-              <p className="text-xl font-bold font-blinker md:text-2xl">
+              <p className="text-xl font-bold styles.blinker md:text-2xl">
                 {currQuantity > 1
                   ? currQuantity * selectedProduct.price
                   : selectedProduct.price}
@@ -121,12 +123,12 @@ function ProductCard({ selectedProduct }) {
 
             <div className="grid grid-cols-1 gap-5 mt-10 md:grid-cols-2">
               <button
-                className="font-bold text-lg border-2 border-black py-2 hover:cursor-pointer hover:text-white hover:bg-black transition-all duration-200 ease-in-out"
+                className="font-bold text-lg border-2 border-black py-2 hover:cursor-pointer hover:text-white hover:bg-black transition-all duration-300 ease-in-out"
                 onClick={() => handleAddToCart(selectedProduct)}
               >
                 ADD TO CART
               </button>
-              <button className="font-bold text-lg bg-red-700 py-2 text-white hover:cursor-pointer hover:border-2 hover:border-red-700 hover:text-red-700 hover:bg-transparent transition-all duration-200 ease-in-out">
+              <button className="font-bold text-lg bg-red-700 py-2 text-white hover:cursor-pointer hover:border-2 hover:border-red-700 hover:text-red-700 hover:bg-transparent transition-all duration-300 ease-in-out">
                 BUY NOW
               </button>
             </div>
@@ -134,19 +136,19 @@ function ProductCard({ selectedProduct }) {
         </div>
 
         <div className="mt-20 grid grid-cols-1 gap-5 md:grid-cols-3">
-          <div className="bg-gray-200 px-5 py-5">
-            <p className="font-bold text-xl font-blinker">Texture:</p>
-            <p className="text-base font-blinker">{selectedProduct.texture}</p>
+          <div className="bg-[#e5e5e5] px-5 py-5 styles.blinker flex flex-col gap-1">
+            <p className="font-semibold text-[21px] tracking-wide">Texture:</p>
+            <p className="text-[17px]">{selectedProduct.texture}</p>
           </div>
 
-          <div className="bg-gray-200 px-5 py-5">
-            <p className="font-bold text-xl font-blinker">Weight:</p>
-            <p className="text-base font-blinker">{selectedProduct.weight}kg</p>
+          <div className="bg-[#e5e5e5] px-5 py-5 styles.blinker flex flex-col gap-1">
+            <p className="font-semibold text-[21px] tracking-wide">Weight:</p>
+            <p className="text-[17px]">{selectedProduct.weight}kg</p>
           </div>
 
-          <div className="bg-gray-200 px-5 py-5">
-            <p className="font-bold text-xl font-blinker">Size:</p>
-            <p className="text-base font-blinker">{selectedProduct.size}</p>
+          <div className="bg-[#e5e5e5] px-5 py-5 styles.blinker flex flex-col gap-1">
+            <p className="font-semibold text-[21px] tracking-wide">Size:</p>
+            <p className="text-[17px]">{selectedProduct.size}</p>
           </div>
         </div>
       </div>
