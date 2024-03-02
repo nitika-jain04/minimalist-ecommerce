@@ -29,6 +29,10 @@ export default function Navbar() {
     setOpen(click);
   }
 
+  function handleSidebar(click) {
+    setOpenSidebar(click);
+  }
+
   useEffect(() => {
     setUser(JSON.parse(localStorage.getItem("user")));
   }, []);
@@ -40,10 +44,6 @@ export default function Navbar() {
     );
     setTotalCartItems(newTotalCartItems);
   }, [cartCtx.items]);
-
-  function handleSidebar(click) {
-    setOpenSidebar(click);
-  }
 
   const listenScrollEvent = () => {
     window.scrollY > 20 ? setNavPadding("py-0") : setNavPadding("py-4");
