@@ -1,16 +1,6 @@
 "use client";
 import { createContext, useEffect, useReducer } from "react";
 
-// function getLocalData() {
-//   let localCartData = localStorage.getItem("cartItems");
-
-//   if (localCartData === null || localCartData === "[]") {
-//     return [];
-//   } else {
-//     return JSON.parse(localCartData);
-//   }
-// }
-
 function getLocalData() {
   try {
     let localCartData = localStorage.getItem("cartItems");
