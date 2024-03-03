@@ -49,9 +49,9 @@ function ProductCard({ selectedProduct }) {
 
   return (
     <div>
-      {clicked && (
-        <Toaster toastOptions={{ duration: 6000, className: "z-50" }} />
-      )}
+      <div>
+        <Toaster toastOptions={{ duration: 6000 }} />
+      </div>
       <div className="px-5 mt-5 xl:px-36 xl:w-full">
         <div className="flex justify-center font-bold text-3xl">
           <h3 className="z-40 font-extrabold">{selectedProduct.productName}</h3>
